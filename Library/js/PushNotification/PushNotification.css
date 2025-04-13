@@ -1,0 +1,41 @@
+.PushNotification{
+    display: flex;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 300px;
+    height: 50px;
+    border-radius: 10px;
+    transform: translateY(130px);
+    opacity: 0;
+    transition: opacity 0.5s, transform 0.5s;
+}
+.PushNotificationShow{
+    transform: translateY(0px);
+    opacity: 1;
+    }
+#PushNotification .Icon{
+margin-top: auto;
+margin-bottom: auto;
+margin-left: 10px;
+font-size: 2rem;
+}
+#PushNotification .Info{
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 10px;
+    font-size: 1rem;}
+/* Notifi Modes */
+.PushNotificationSuccess{
+    background-color: #198754;
+    color: white;}
+.PushNotificationPrimary{
+    background-color: #0d6efd;
+    color: white;}
+.PushNotificationDanger{
+    background-color: #dc3545;
+    color: white;}
+.PushNotificationWarning{
+    background-color: #ffc107;}
+.PushNotificationInfo{
+    background-color: #0dcaf0;}

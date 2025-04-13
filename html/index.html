@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+    <script src="js/tools.js"></script>
+    <script src="js/script.js" defer></script>
+    <link rel="shortcut icon" href="Files/logo.png" type="image/x-icon">
+    <title>پیامرسان وب سایفر</title>
+</head>
+<body>
+    <div id="SideBar">
+        <div id="TopMenu">
+            <input type="search" placeholder="جستجو کاربران" id="SearchInput">
+            <i class="bi bi-list"></i>
+        </div>
+        <hr>
+        <div id="SearchBox"></div>
+        <div id="Chats"></div>
+    </div>
+    <div id="MessageBox">
+        <div id="Inputs">
+            <div id="box">
+                <i class="emoji-input bi bi-emoji-smile-fill"></i>
+                <textarea name="" id="InputText" placeholder="یک پیامی بنویسید" dir="rtl"></textarea>
+                <i class="attach-input bi bi-paperclip"></i>
+            </div>
+            <button onclick="Sendmsg()"><i class="bi bi-send-fill"></i></button>
+        </div>
+        <br>
+        <div id="Messages">   
+        <br>
+         
+    </div>
+</body>
+<script>
+
+    const textarea = document.querySelector('#Inputs #box textarea');
+
+textarea.addEventListener('input', () => {
+  const value = textarea.value.trim();
+
+  if (value === "") {
+    // اگه خالی بود → راست‌چین باشه پیش‌فرض
+    textarea.style.direction = 'rtl';
+    textarea.style.textAlign = 'right';
+  } 
+  else if (/[\u0600-\u06FF]/.test(value)) {
+    // اگه فارسی تایپ شد → راست‌چین
+    textarea.style.direction = 'rtl';
+    textarea.style.textAlign = 'right';
+  } 
+  else {
+    // اگه انگلیسی بود → چپ‌چین
+    textarea.style.direction = 'ltr';
+    textarea.style.textAlign = 'left';
+  }
+});
+</script>
+</html>

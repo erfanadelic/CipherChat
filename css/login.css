@@ -1,0 +1,64 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0093E9;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);}
+html,body{height: 99%;}
+body,html,input,p,h1,*{
+    font-family: "Almarai", serif;
+    font-weight: 700;
+    font-style: normal;}
+.Box{
+    background-color: white;
+    width: 30%;
+    height: 50%;
+    border-radius: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;}
+.Logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px;
+    margin-bottom: 30px;}
+.Box img{margin-left: auto;  }
+.Box h1{
+    background: linear-gradient(90deg, rgba(25,135,84,1) 0%, rgba(13,110,253,1) 100%);
+    -webkit-background-clip: text;
+    color: transparent;
+    font-size: 3rem;
+    margin-right: auto;}
+.Box p{
+    text-align: center;
+    font-size: 1.5rem;}
+.Input{
+    text-align: center;
+    width:60%;
+    height: 50px;
+    border-radius: 10px;
+    border: solid 2px;
+    border-color:  rgba(25,135,84,1);
+    outline: none;
+    margin: 10px;
+    display: block;
+    font-size: 1.5rem;
+}
+.InputNumber{
+margin-left: auto;
+margin-right: auto;
+background: linear-gradient(90deg, rgba(25,135,84,1) 0%, rgba(13,110,253,1) 100%);;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent; /* Makes the text transparent */;
+} 
+.InputCode{
+    margin-left: auto;
+    margin-right: auto;}
+.LoginBtn{
+    background-color: rgba(25,135,84,1);
+    color: white;
+    margin-left: auto;
+    margin-right: auto;}

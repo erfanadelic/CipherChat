@@ -1,0 +1,250 @@
+:root{
+    --bg-primary:#198754;
+    --bg-secondary: white;
+    --font-blue:#0d6efd;
+    --font-lightgray:#707579;
+    --font:white;
+    --font-focus:red;}
+body{
+    background-color: #0093E9;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+    
+    
+} 
+input,textarea,span,p{
+    font-family: "Vazir";
+    font-size: larger;
+    font-weight: bold;}
+::-webkit-scrollbar{background-color: white;width: 5px;}
+::-webkit-scrollbar-thumb{background-color: #707579;}
+.OpenSidebarBTN{
+
+}
+#SideBar{
+    position: absolute;
+    width: 20%; 
+    height: 100%; 
+    top: 0;
+    right: 0;
+    margin: 20px;
+    margin-top: 0;
+    margin-right: 0;
+    background-color: var(--bg-secondary);}
+#Profile{display: flex;align-items: center;}    
+#Profile img{width: 20%;border-radius: 50px;margin: 10px;}
+#Profile .bi-search{margin-left: auto; margin-top: auto; margin-bottom: auto; padding: 10px; font-size: xx-large;}
+#MessageBox {
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    width: 80%;
+    height: 100%;
+    overflow-y: auto;}
+#InputMsg {
+    position: fixed;
+    top: 90%;
+    width: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 4%;
+    border-radius: 10px;
+    border: 0;
+    box-shadow: 1px 1px 0.5px 0.5px;
+    direction: rtl;
+    padding: 5px;
+    z-index: 1000;}
+.SendBtn{
+    position: fixed ;
+    transform: translate(-50%, -50%);
+    top: 90%;
+    left: 78%;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: var(--bg-secondary);
+    color: var(--bg-primary);
+    font-size: xx-large;
+    border: 0;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;}
+.SendBtn:hover{color: var(--font-blue);}
+.MessageRow {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    max-width: 70%;
+}
+
+.MessageRow.sent {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+    margin-right: 20px;
+    margin-left: auto;
+}
+
+.MessageRow.received {
+    align-self: flex-start;
+    flex-direction: row;
+    margin-left: 20px;
+    margin-right: 0;
+}
+
+.ProfileImage {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.MessageContent {
+    display: flex;
+    flex-direction: column;
+    word-break: break-word;
+    background-color: var(--bg-secondary);
+    padding: 15px;
+    border-radius: 15px;
+    border-bottom-right-radius: 0px;
+    color: black;
+}
+.MessageRow.sent .MessageContent {
+    background-color: var(--bg-primary);/* رنگ سبز ملایم */
+    color: var(--font); /* اختیاری: فونت سفید برای وضوح بیشتر */
+}
+
+
+
+#Messages span{font-weight: bold;}
+.ActiveChat{background-color: var(--bg-primary);color: var(--font);}
+.ChatBOX{
+    display: flex;
+    align-items:center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px;
+    width: 85%;
+    height: 120px;
+    border-radius:10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;}
+.ChatBOX img {margin: 15px;   width: 25%;border-radius: 50px;}
+.ChatBOX span{margin-left: auto;} 
+    #sidebtn{
+        display: none;
+    }
+    #Inputs {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        bottom: 0;       
+        left: 0;
+        width: 80%;
+        height: 10%;}
+    
+#Inputs #box{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    height: 65%;
+    background-color: var(--bg-secondary);
+    border: 5px 5px 5px solid;
+    border-radius: 15px;
+    border-bottom-right-radius: 0px;
+    }
+.emoji-input{
+    margin: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 2rem;
+    color: #707579;
+
+
+}
+#Inputs #box textarea{
+margin: 5px;
+margin-left: auto;
+margin-right: auto;
+width: 80%;
+outline: none;
+border: none;
+
+}
+#box:has(textarea:focus) {
+    border: 3px solid var(--font-blue); /* ضخامت، نوع، رنگ */
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transition: all 0.3s ease-in-out;
+  }  
+.attach-input{
+    margin: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 2rem;
+    color: #707579;
+    transform: rotate(30deg);}
+#Inputs button{
+    background-color: var(--bg-primary);
+    color: var(--font);
+    border: 0;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    font-size: xx-large;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    position: absolute;
+    left: 77%;}  
+#TopMenu{
+display: flex;
+margin: 10px;
+}
+#SearchInput{
+    width: 90%;
+    height: 35px;
+    border-radius: 10px;
+    border: 1px solid var(--font-lightgray);
+    direction: rtl;
+    padding: 10px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}  
+#TopMenu .bi-list{
+    font-size: xx-large;
+    margin-left: auto;
+}
+#SearchBox{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: 20%;
+    height: 94%;
+    background-color: white;
+    display: none;
+    transition: all 0.3s ease-in-out;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;}
+
+.SearchItem{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    height: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    padding: 15px;
+    cursor: pointer;}
+.SearchItem:hover{background-color: #70757957;}
+.SearchItem img{
+    width: 60px;
+    border-radius: 50%;
+}
+.SearchItem span{
+    margin: 10px;
+    margin-left: auto;
+    font-size: larger;
+    font-weight: bold;}
+
+
+
+
