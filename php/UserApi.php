@@ -49,25 +49,40 @@ function GetUserChats(){
 function SendVerifyCode(){
     global $CipherDB;
     $Number = $_POST["number"];
-    $VerifyCode = rand(10000, 99999);
-    echo $VerifyCode;
-    $Time = GetJaliliDate("H:M:S");
-    $SendREQ = SendPatternMessaage(161, $Number, array("code" => strval($VerifyCode)));
-    //$SendREQ = true;
+    //$VerifyCode = rand(10000, 99999);
+    $VerifyCode = 0000;
+    $Time = convertPersianTimeToEnglish(GetJaliliDate("H:M:S"));
+    //$SendREQ = SendPatternMessaage(161, $Number, array("code" => strval($VerifyCode)));
+    $SendREQ = true;
     if($SendREQ){
         $CipherDB->query("INSERT INTO otp_codes (Number, `OTP Code`, CreateTime) VALUES ('$Number', $VerifyCode, '$Time')");
         http_response_code(200);
     }else{
-        http_response_code(response_code: 503);}}
-function CheckVerifyCode(){
-    global $CipherDB;
-    $Number = $_POST["number"];
-    $VerifiyCode = $_POST["code"];
-    $Result = $CipherDB->query("SELECT * FROM otp_codes WHERE Number = '$Number' AND `OTP Code` = '$VerifiyCode';");
-    if($Result->num_rows == 1){
-        $CipherDB-> query("DELETE FROM otp_codes WHERE Number = '$Number' AND `OTP Code` = '$VerifiyCode';");
-        Login();
-    }else{echo "fff";http_response_code(401);}}
+        http_response_code( 503);}}
+        function CheckVerifyCode(){
+            global $CipherDB;
+            $Number = $_POST["number"];
+            $VerifyCode = $_POST["code"];
+        
+            // اصلاح کوئری با اطمینان از استفاده صحیح از کوتیشن‌ها
+            $query = "SELECT * FROM otp_codes WHERE Number = '$Number' AND `OTP Code` = '$VerifyCode'";
+        
+            // بررسی و اجرای کوئری
+            try {
+                $Result = $CipherDB->query($query);
+                if($Result->num_rows == 1){
+                    $CipherDB->query("DELETE FROM otp_codes WHERE Number = '$Number' AND `OTP Code` = '$VerifyCode';");
+                    Login();
+                } else {
+                    echo "Invalid code or number.";
+                    http_response_code(401);
+                }
+            } catch (mysqli_sql_exception $e) {
+                echo "Error in SQL query: " . $e->getMessage();
+                http_response_code(500);  // Internal Server Error
+            }
+        }
+        
 function Login(){
     global $CipherDB;
     $Number = $_POST["number"];
@@ -84,7 +99,7 @@ function SignUP(){
     $Number = $_POST["number"];
     $PrivateKey = MakePrivateKey();
     echo(strlen($PrivateKey));
-    $CipherDB->query("INSERT INTO users (Uuid,Number, PrivateKey) VALUES (uuid(),'$Number', '$PrivateKey')");
+    $CipherDB->query("INSERT INTO users (Uuid,Number, PrivateKey,Name) VALUES (uuid(),'$Number', '$PrivateKey','$Number')");
     Login();}
 
 function SearchUser(){
@@ -93,5 +108,12 @@ function SearchUser(){
     $UserUuid = $_COOKIE["Uuid"];
     $QueryResult = $CipherDB->query("SELECT * FROM users WHERE Uuid != '$UserUuid' AND (Name LIKE '%$Search%' OR Username LIKE '%$Search%')");
     $result = $QueryResult->fetch_all(MYSQLI_ASSOC);
+    header('Content-Type: application/json');
+    echo json_encode($result);}
+function GetUserInfo(){
+    global $CipherDB;
+    $UserUuid = $_POST["Uuid"];
+    $QueryResult = $CipherDB->query("SELECT * FROM users WHERE Uuid = '$UserUuid'");
+    $result = $QueryResult->fetch_assoc();
     header('Content-Type: application/json');
     echo json_encode($result);}

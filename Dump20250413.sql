@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `groups`;
 CREATE TABLE `groups` (
   `ss` int NOT NULL,
   PRIMARY KEY (`ss`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -61,7 +61,7 @@ CREATE TABLE `messages` (
   KEY `ReceiverUuid` (`ReceiverUuid`),
   CONSTRAINT `messages_ibfk_1` FOREIGN KEY (`SenderUuid`) REFERENCES `users` (`Uuid`),
   CONSTRAINT `messages_ibfk_2` FOREIGN KEY (`ReceiverUuid`) REFERENCES `users` (`Uuid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -70,7 +70,7 @@ CREATE TABLE `messages` (
 
 LOCK TABLES `messages` WRITE;
 /*!40000 ALTER TABLE `messages` DISABLE KEYS */;
-INSERT INTO `messages` VALUES ('56fe1d32-5ded-4d3a-9d42-7d9622980f8e','e5b5c09f-1550-11f0-887e-54e1ad396dd2','1c76b649-16fd-11f0-9729-54e1ad396dd2',0,'slam test1','text','1404-01-23 11:01:00',NULL,'sent',NULL,NULL),('5775789a-56cf-4a9f-84f8-70ba41f012dd','1c76b649-16fd-11f0-9729-54e1ad396dd2','e5b5c09f-1550-11f0-887e-54e1ad396dd2',0,'slam','text','1404-01-23 11:01:00',NULL,'sent',NULL,NULL),('7cac55a6-e66e-46d6-b514-df429f77ceb3','e5b5c09f-1550-11f0-887e-54e1ad396dd2','1c76b649-16fd-11f0-9729-54e1ad396dd2',0,'kobu','text','1404-01-23 11:01:00',NULL,'sent',NULL,NULL),('8af5c43f-40bf-42c6-9f31-c065fd7ef05d','1c76b649-16fd-11f0-9729-54e1ad396dd2','e5b5c09f-1550-11f0-887e-54e1ad396dd2',0,'1212','text','1404-01-23 11:01:00',NULL,'sent',NULL,NULL);
+INSERT INTO `messages` VALUES ('afb03770-bc76-4d8c-8d2d-804ef95ed4bf','a2a0bc58-1833-11f0-a30d-54e1ad396dd2','d36cc988-1833-11f0-a30d-54e1ad396dd2',0,'dfdfdf','text','1404-01-24 11:01:00',NULL,'sent',NULL,NULL),('bb21938c-1d00-4552-95c4-a1965f047d95','d36cc988-1833-11f0-a30d-54e1ad396dd2','a2a0bc58-1833-11f0-a30d-54e1ad396dd2',0,'sdsdsd','text','1404-01-24 11:01:00',NULL,'sent',NULL,NULL);
 /*!40000 ALTER TABLE `messages` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -87,7 +87,7 @@ CREATE TABLE `otp_codes` (
   `OTP Code` varchar(5) NOT NULL,
   `CreateTime` varchar(30) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -96,7 +96,7 @@ CREATE TABLE `otp_codes` (
 
 LOCK TABLES `otp_codes` WRITE;
 /*!40000 ALTER TABLE `otp_codes` DISABLE KEYS */;
-INSERT INTO `otp_codes` VALUES (11,'09982208533','29050','۱۰:۱:۰'),(14,'09158080539','91363','۱۱:۱:۰');
+INSERT INTO `otp_codes` VALUES (11,'09982208533','29050','۱۰:۱:۰'),(14,'09158080539','91363','۱۱:۱:۰'),(16,'09158080539','30957','۲۰:۱:۰'),(17,'09158080539','82734','۲۰:۱:۰'),(26,'09982208533','33467','۱۱:۱:۰');
 /*!40000 ALTER TABLE `otp_codes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -114,7 +114,7 @@ CREATE TABLE `users` (
   `Number` varchar(20) NOT NULL,
   `PrivateKey` char(36) DEFAULT NULL,
   `LastSeen` datetime DEFAULT NULL,
-  `ProfilePicture` text,
+  `ProfilePicture` varchar(100) DEFAULT 'DefualtProfile.png',
   `Bio` text,
   `Groups` json DEFAULT NULL,
   `Chats` json DEFAULT NULL,
@@ -126,7 +126,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`Uuid`),
   UNIQUE KEY `Number` (`Number`),
   UNIQUE KEY `Username` (`Username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -135,7 +135,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES ('1c76b649-16fd-11f0-9729-54e1ad396dd2','Erfan Adeli',NULL,'09982208533','f1c4d42b547c19237cf05638516023bf',NULL,'erfanadeli.jpg',NULL,'[]','[\"e5b5c09f-1550-11f0-887e-54e1ad396dd2\"]',NULL,NULL,NULL,NULL,NULL),('e5b5c09f-1550-11f0-887e-54e1ad396dd2','Erfan Adeli2',NULL,'09158080539','9c4b68771c4850d7f0b491a26793a3f4',NULL,'erfanadeli.jpg',NULL,NULL,'[\"1c76b649-16fd-11f0-9729-54e1ad396dd2\"]',NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `users` VALUES ('a2a0bc58-1833-11f0-a30d-54e1ad396dd2','09158080539',NULL,'09158080539','237f427d36a347a8f85931033ec2ca42',NULL,'DefualtProfile.png',NULL,NULL,'[\"d36cc988-1833-11f0-a30d-54e1ad396dd2\"]',NULL,NULL,NULL,NULL,NULL),('d36cc988-1833-11f0-a30d-54e1ad396dd2','09982208533',NULL,'09982208533','62a2859d341226864aaf89ca8b2c7a5c',NULL,'DefualtProfile.png',NULL,NULL,'[\"a2a0bc58-1833-11f0-a30d-54e1ad396dd2\"]',NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -148,4 +148,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-04-12 18:56:42
+-- Dump completed on 2025-04-13 10:42:52

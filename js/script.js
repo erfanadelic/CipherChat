@@ -95,9 +95,9 @@ function GetMesaages() {
           xhr.open('POST',"/cipher/php/api.php",true);
           xhr.onload = function () {
             var mesages = JSON.parse(xhr.responseText);
-            console.log(mesages);
+  
             mesages.forEach(function(message){
-              console.log(message);
+        
               
            appendMsg(message.SenderUuid, message.Content, message.ProfilePicture, message.SenderName);
             })
@@ -109,9 +109,9 @@ function GetChats() {
   xhr.open('POST', "/cipher/php/api.php", true);
   xhr.onload = function () {
     var chats = JSON.parse(xhr.responseText);
-    console.log(chats);
+    
     chats.forEach(function (chat) {
-      console.log(chat);
+      
       NewChat(chat.Uuid, chat.Name,chat.ProfilePicture);
     })
 
@@ -134,7 +134,7 @@ function CloseSideBar() {
 
 if (getCookie("Uuid"),getCookie("PrivateKey")) {
 }else{
-  location.href = "/ochat/html/login.html";
+  location.href = "/cipher/html/login.html";
 }
 
 
@@ -150,7 +150,7 @@ function PusherConfig() {
 const channelName = getPusherChannelName(getCookie("Uuid"), window.location.hash.replace("#", ""));
 const channel = pusher.subscribe(channelName);
   channel.bind("NewMessage", function (data) {
-      console.log("پیام جدید:", data);
+
            appendMsg(
               data.SenderUuid,
               data.Content,
@@ -203,9 +203,9 @@ function SearchUserApi() {
   xhr.open('POST', "/cipher/php/api.php", true);
   xhr.onload = function () {
     var chats = JSON.parse(xhr.responseText);
-    console.log(chats);
+    
     chats.forEach(function (chat) {
-      console.log(chat);
+
       AppendSearchItem(chat.Uuid,chat.Name,chat.ProfilePicture);
     })
   }
@@ -214,3 +214,21 @@ function SearchUserApi() {
 }
 
 setInterval(GetChats, 1000);
+
+function logout() {
+  document.cookie = "PrivateKey=; path=/cipher; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+  document.cookie = "uuid=; path=/cipher; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+  window.location.reload();
+}
+
+function GetUserInfo(Uuid,callback) {
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', "/cipher/php/api.php", true);
+  xhr.onload = function () {
+    var chats = JSON.parse(xhr.responseText);
+    callback(chats);
+    
+  }
+  xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+  xhr.send("ApiMode=GetUserInfo&Uuid=" + Uuid)
+}

@@ -23,4 +23,7 @@ switch ($ApiMode) {
     case "SearchUser":
         SearchUser();
         break;
+    case "GetUserInfo":
+        GetUserInfo();
+        break;
 }
