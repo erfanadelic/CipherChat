@@ -41,6 +41,7 @@ class MessageManager {
     
         // Bind parameters to SQL statement
         $stmt->bind_param(
+            "sssssssssss",
       $data['MessageUuid'],
      $data['SenderUuid'],
         $data['ReceiverUuid'],

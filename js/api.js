@@ -7,7 +7,7 @@ function SendMessage() {
         xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         xhr.send("ApiMode=SendMessage&Content=" + 
             encodeURIComponent(MessageText.value.replaceAll("\n","<br>")) + 
-            "&IsGroup=0&MessageType=text&ReciverUuid=" + 
+            "&IsGroup=0&MessageType=text&ReceiverUuid=" + 
             window.location.hash.replace("#", ""));
         MessageText.value = "";}}
 
