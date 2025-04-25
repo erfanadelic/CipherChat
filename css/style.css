@@ -43,9 +43,9 @@ body,input,textarea,span,p {
 #MessageBox {
     position: absolute;
     left: 0%;
-    bottom: 0%;
+    top: 10%;
     width: 80%;
-    height: 90%;
+    height: 75%;
     overflow-y: auto;}
 
 .MessageRow {

@@ -9,6 +9,17 @@ document.getElementById("SearchInput").addEventListener("change", function(event
         SearchBox.style.display = "block";
         SearchUserApi()}});
 
+function handleEnter(event) {
+    if (event.key === 'Enter') {
+        if (event.shiftKey) {
+            return true;
+        } else {
+            event.preventDefault();
+            SendMessage();
+        }
+    }
+}
+        
 /**
  * Handle chat item click
  * @param {string} id Chat UUID to activate
@@ -210,8 +221,7 @@ function appendMessage(senderUuid, message, profileImgSrc = "default.jpg", sende
         contentBox.appendChild(nameTag);
         contentBox.appendChild(document.createElement("br"));}
     // Add message text
-    const messageText = document.createTextNode(message);
-    contentBox.appendChild(messageText);
+    contentBox.innerHTML = message;
   
     // Add elements to message row
     msgRow.appendChild(img);
