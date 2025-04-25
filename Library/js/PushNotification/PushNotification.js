@@ -5,7 +5,7 @@ function ShowNotification(Type,Info){
     PN.classList.add("PushNotification"+Type);
     PN.id = "PushNotification"
     PN.innerHTML = '<span class="Icon"><i class="bi bi-info-circle"></i></span><span class="Info">'+Info+'</span>'
-    document.getElementById("body").appendChild(PN);
+    document.getElementById("Body").appendChild(PN);
     setTimeout(() => {
         PN.classList.remove("PushNotificationShow");
     }, 3000);

@@ -1,5 +1,6 @@
 <?php
 require_once "vendor/autoload.php";
+
 // Load PHP Libs
 foreach (glob("../Library/php/*.php") as $file) {include_once $file;}
 $CipherDB = new mysqli("localhost","root","12121212ssss","cipher");

@@ -24,7 +24,7 @@
         <input type="text" name="APImode" value="login_number" hidden>
         <input type="submit" value="ارسال کد تایید" class="Input LoginBtn">
     </div>
-</body>
+</body id="Body">
 <script>
     var InfoP = document.querySelector(".Box p");
     var InputNumber = document.querySelector(".InputNumber")
@@ -64,6 +64,7 @@
         xhr.onload = function () {
             if (xhr.status == 204) {
                 location.reload();
+                window.location.href = "/cipher";
                 
             }else{
                 InputCode.value = "";
@@ -73,9 +74,11 @@
         xhr.send("ApiMode=CheckVerifyCode&number=" + InputNumber.value+"&code="+InputCode.value);
     
     }
-    if (getCookie("Uuid"),getCookie("PrivateKey")) {
-        location.href = "/cipher";a
-    }
+    // if (getCookie("Uuid") == null || getCookie("PrivateKey") == null) {
+       
+    // }else{
+    //     location.href = "/cipher";
+    // }
     
 </script>
 </html>

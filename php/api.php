@@ -26,4 +26,7 @@ switch ($ApiMode) {
     case "GetUserInfo":
         GetUserInfo();
         break;
+    case "UpdateUserInfo":
+        UpdateUserInfo();
+        break;
 }

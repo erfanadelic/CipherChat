@@ -6,3 +6,11 @@ function getCookie(name) {
     }
     return null;
 }
+function Redirect(url) {
+    window.location.href = url;
+}
+// Only check authentication if we're not already on the login page
+if (window.location.pathname !== '/cipher/html/login.html' && 
+    (getCookie("Uuid") == null || getCookie("PrivateKey") == null)) {
+    Redirect("/cipher/html/login.html");
+}

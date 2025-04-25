@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `groups`;
 CREATE TABLE `groups` (
   `ss` int NOT NULL,
   PRIMARY KEY (`ss`)
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -50,6 +50,7 @@ CREATE TABLE `messages` (
   `ReceiverUuid` char(36) NOT NULL,
   `IsGroup` tinyint(1) DEFAULT '0',
   `Content` text,
+  `Media` text,
   `MessageType` varchar(50) DEFAULT 'text',
   `SendTime` datetime NOT NULL,
   `SeenTime` datetime DEFAULT NULL,
@@ -61,7 +62,7 @@ CREATE TABLE `messages` (
   KEY `ReceiverUuid` (`ReceiverUuid`),
   CONSTRAINT `messages_ibfk_1` FOREIGN KEY (`SenderUuid`) REFERENCES `users` (`Uuid`),
   CONSTRAINT `messages_ibfk_2` FOREIGN KEY (`ReceiverUuid`) REFERENCES `users` (`Uuid`)
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -70,7 +71,7 @@ CREATE TABLE `messages` (
 
 LOCK TABLES `messages` WRITE;
 /*!40000 ALTER TABLE `messages` DISABLE KEYS */;
-INSERT INTO `messages` VALUES ('afb03770-bc76-4d8c-8d2d-804ef95ed4bf','a2a0bc58-1833-11f0-a30d-54e1ad396dd2','d36cc988-1833-11f0-a30d-54e1ad396dd2',0,'dfdfdf','text','1404-01-24 11:01:00',NULL,'sent',NULL,NULL),('bb21938c-1d00-4552-95c4-a1965f047d95','d36cc988-1833-11f0-a30d-54e1ad396dd2','a2a0bc58-1833-11f0-a30d-54e1ad396dd2',0,'sdsdsd','text','1404-01-24 11:01:00',NULL,'sent',NULL,NULL);
+INSERT INTO `messages` VALUES ('afb03770-bc76-4d8c-8d2d-804ef95ed4bf','a2a0bc58-1833-11f0-a30d-54e1ad396dd2','d36cc988-1833-11f0-a30d-54e1ad396dd2',0,'dfdfdf',NULL,'text','1404-01-24 11:01:00',NULL,'sent',NULL,NULL),('bb21938c-1d00-4552-95c4-a1965f047d95','d36cc988-1833-11f0-a30d-54e1ad396dd2','a2a0bc58-1833-11f0-a30d-54e1ad396dd2',0,'sdsdsd',NULL,'text','1404-01-24 11:01:00',NULL,'sent',NULL,NULL);
 /*!40000 ALTER TABLE `messages` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -87,7 +88,7 @@ CREATE TABLE `otp_codes` (
   `OTP Code` varchar(5) NOT NULL,
   `CreateTime` varchar(30) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -126,7 +127,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`Uuid`),
   UNIQUE KEY `Number` (`Number`),
   UNIQUE KEY `Username` (`Username`)
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -148,4 +149,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-04-13 10:42:52
+-- Dump completed on 2025-04-22 18:16:10
