@@ -102,3 +102,4 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!event.target.closest('.dropmenu') && !event.target.closest('[id^="menu-"][id$="-btn"]')) {
             document.querySelectorAll('.dropmenu').forEach(function (menu) {
                 menu.style.display = 'none';});}});});
+setInterval(function() {GetChats();}, 1000); // Refresh chats every 1 seconds
